@@ -51,7 +51,7 @@ jobs:
     steps:
       - name: Auto merge
         # Custom action for auto merging already available on marketplace
-        uses: pascalgn/automerge-action@135f0bdb927d9807b5446f7ca9ecc2c51de03c4a
+        uses: "pascalgn/automerge-action@f81beb99aef41bb55ad072857d43073fba833a98"
         # Perform the auto merge action only when the PR is raised by dependabot
         if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
         env:
@@ -60,3 +60,7 @@ jobs:
           # So, this action merges those PRs labelled "dependencies" only
           MERGE_LABELS: dependencies
           MERGE_METHOD: rebase
+          MERGE_COMMIT_MESSAGE: "pull-request-description"
+          MERGE_RETRIES: "2"
+          MERGE_RETRY_SLEEP: "10000"
+ 
